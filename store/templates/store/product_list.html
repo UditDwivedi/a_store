@@ -1,0 +1,31 @@
+{% extends 'store/base.html' %}
+
+{% block title %}Product List{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Product List</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="row">
+            {% for product in products %}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">Rs {{ product.price }}</p>
+                        <div class="form-group">
+                            <label for="product_{{ product.id }}">Quantity:</label>
+                            <input type="number" class="form-control" name="product_{{ product.id }}" min="0" value="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Add to Order</button>
+        <!-- <a href="{% url 'order_list' %}"><button disabled class="btn btn-secondary mt-3">See Orders</button></a> -->
+        <a href="{% url 'order_list' %}" class="btn btn-secondary mt-3">See Orders</a>
+    </form>
+</div>
+{% endblock %}
