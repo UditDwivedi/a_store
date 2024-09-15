@@ -1,0 +1,5 @@
+.card img {
+    width: 100%; /* Adjust to the container's width */
+    height: 310px; /* Set a fixed height */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+}
