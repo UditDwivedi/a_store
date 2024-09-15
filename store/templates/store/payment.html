@@ -11,11 +11,15 @@
             <div class="mt-3">
                 <h6>Scan to Pay</h6>
                 {% if order.total_price == 10 %}
-                    <!-- <img src="static/images/payqr.jpg" alt="UPI QR Code" class="img-fluid rounded mt-3"> -->
                     {% load static %}
-                    <img src="{% static 'images/payqr.jpg' %}" alt="My image">
+                    <img src="{% static 'images/payqr10.jpg' %}" alt="My image">
                 {% else %}
-                    <img src="{{ qr_code_url }}" alt="UPI QR Code" class="img-fluid rounded mt-3">
+                    {% if order.total_price == 20 %}
+                        {% load static %}
+                        <img src="{% static 'images/payqr20.jpg' %}" alt="My image">
+                    {% else %}
+                        <img src="{{ qr_code_url }}" alt="UPI QR Code" class="img-fluid rounded mt-3">
+                    {% endif %}                
                 {% endif %}
             </div>
         </div>
