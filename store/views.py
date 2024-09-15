@@ -37,6 +37,7 @@ def order_list(request):
 def generate_upi_qr(order):
     # External API URL for UPI QR code generation (replace with the actual API endpoint)
     api_url = 'https://api.upiqrcode.com/generate'
+    print(f"Calling api: Make Amount: {order.total_price()}")
     
     # API payload (replace with the actual payload required by the API)
     payload = {
@@ -56,6 +57,8 @@ def generate_upi_qr(order):
 
 def payment(request, order_id):
     order = Order.objects.get(id=order_id)
+    # qr_code_url = generate_upi_qr(order)
+    print(f"Calling api: Make Amount: {order.total_price()}")
     return render(request, 'store/payment.html',{"order":order})
 
 def verify_payment(request, order_id):
